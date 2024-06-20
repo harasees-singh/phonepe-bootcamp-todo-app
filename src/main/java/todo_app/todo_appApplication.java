@@ -3,6 +3,10 @@ package todo_app;
 import io.dropwizard.core.Application;
 import io.dropwizard.core.setup.Bootstrap;
 import io.dropwizard.core.setup.Environment;
+import io.dropwizard.jdbi3.JdbiFactory;
+import org.jdbi.v3.core.Jdbi;
+import todo_app.db.TodoDao;
+import todo_app.resources.TodoResource;
 
 public class todo_appApplication extends Application<todo_appConfiguration> {
 
@@ -23,7 +27,11 @@ public class todo_appApplication extends Application<todo_appConfiguration> {
     @Override
     public void run(final todo_appConfiguration configuration,
                     final Environment environment) {
-        // TODO: implement application
+        final JdbiFactory factory = new JdbiFactory();
+        final Jdbi jdbi = factory.build(environment, configuration.getDataSourceFactory(), "mysql");
+
+        final TodoDao todoDao = jdbi.onDemand(TodoDao.class);
+        environment.jersey().register(new TodoResource(todoDao));
     }
 
 }
