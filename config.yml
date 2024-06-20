@@ -1,0 +1,5 @@
+---
+logging:
+  level: INFO
+  loggers:
+    todo_app: DEBUG
