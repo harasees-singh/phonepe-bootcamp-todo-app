@@ -7,6 +7,7 @@ import io.dropwizard.jdbi3.JdbiFactory;
 import org.jdbi.v3.core.Jdbi;
 import todo_app.db.TodoDao;
 import todo_app.resources.TodoResource;
+import todo_app.services.TodoService;
 
 public class todo_appApplication extends Application<todo_appConfiguration> {
 
@@ -31,7 +32,11 @@ public class todo_appApplication extends Application<todo_appConfiguration> {
         final Jdbi jdbi = factory.build(environment, configuration.getDataSourceFactory(), "mysql");
 
         final TodoDao todoDao = jdbi.onDemand(TodoDao.class);
-        environment.jersey().register(new TodoResource(todoDao));
+
+        TodoService todoService = new TodoService(todoDao);
+
+        environment.jersey().register(todoService);
+        environment.jersey().register(new TodoResource(todoService));
     }
 
 }

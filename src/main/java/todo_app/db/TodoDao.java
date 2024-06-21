@@ -3,6 +3,7 @@ package todo_app.db;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.customizer.BindBean;
+import org.jdbi.v3.sqlobject.statement.GetGeneratedKeys;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 import todo_app.api.Todo;
@@ -13,7 +14,8 @@ import java.util.Optional;
 public interface TodoDao {
 
     @SqlUpdate("INSERT INTO todos (id, status, description, startDate, targetDate) VALUES (:id, :status, :description, :startDate, :targetDate)")
-    void insert(@BindBean Todo todo);
+    @GetGeneratedKeys
+    String insert(@BindBean Todo todo);
 
     @SqlQuery("SELECT * FROM todos WHERE id = :id")
     @RegisterBeanMapper(Todo.class)

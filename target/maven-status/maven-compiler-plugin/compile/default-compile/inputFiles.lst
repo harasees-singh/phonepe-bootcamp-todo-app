@@ -1,6 +1,8 @@
 /Users/haraseessingh/Desktop/PhonePe Bootcamp/todo_app/src/main/java/todo_app/api/Todo.java
 /Users/haraseessingh/Desktop/PhonePe Bootcamp/todo_app/src/main/java/todo_app/db/TodoDao.java
 /Users/haraseessingh/Desktop/PhonePe Bootcamp/todo_app/src/main/java/todo_app/enums/Status.java
+/Users/haraseessingh/Desktop/PhonePe Bootcamp/todo_app/src/main/java/todo_app/error/Error.java
 /Users/haraseessingh/Desktop/PhonePe Bootcamp/todo_app/src/main/java/todo_app/resources/TodoResource.java
+/Users/haraseessingh/Desktop/PhonePe Bootcamp/todo_app/src/main/java/todo_app/services/TodoService.java
 /Users/haraseessingh/Desktop/PhonePe Bootcamp/todo_app/src/main/java/todo_app/todo_appApplication.java
 /Users/haraseessingh/Desktop/PhonePe Bootcamp/todo_app/src/main/java/todo_app/todo_appConfiguration.java
