@@ -37,6 +37,8 @@ public class todo_appApplication extends Application<todo_appConfiguration> {
 
         environment.jersey().register(todoService);
         environment.jersey().register(new TodoResource(todoService));
+        
+        environment.servlets().addFilter("CORSFilter", new CORSFilter()).addMappingForUrlPatterns(null, true, "/*");
     }
 
 }
