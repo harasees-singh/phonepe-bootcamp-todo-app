@@ -59,7 +59,7 @@ public class TodoResource {
             return Response.ok().build();
         }
         catch (IllegalArgumentException e) {
-            return Response.status(Response.Status.NOT_FOUND).entity(new Error(e.getMessage())).build();
+            return Response.status(Response.Status.BAD_REQUEST).entity(new Error(e.getMessage())).build();
         }
     }
 

@@ -42,6 +42,9 @@ public class TodoService {
         if (prev_version.isEmpty()) {
             throw new IllegalArgumentException("Todo with id " + id + " not found.");
         }
+        if (todo.getStartDate() != null && todo.getTargetDate() != null && (todo.getStartDate().isAfter(todo.getTargetDate()))){
+            throw new IllegalArgumentException("start date cannot be set past the target date");
+        }
         else {
             Todo prev_version_todo = prev_version.get();
             if (todo.getDescription() == null)
