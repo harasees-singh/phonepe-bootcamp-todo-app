@@ -6,6 +6,7 @@ import io.dropwizard.core.setup.Environment;
 import io.dropwizard.jdbi3.JdbiFactory;
 import org.jdbi.v3.core.Jdbi;
 import todo_app.db.TodoDao;
+import todo_app.filter.CORSFilter;
 import todo_app.resources.TodoResource;
 import todo_app.services.TodoService;
 
@@ -35,9 +36,7 @@ public class todo_appApplication extends Application<todo_appConfiguration> {
 
         TodoService todoService = new TodoService(todoDao);
 
-        environment.jersey().register(todoService);
         environment.jersey().register(new TodoResource(todoService));
-
         environment.servlets().addFilter("CORSFilter", new CORSFilter()).addMappingForUrlPatterns(null, true, "/*");
     }
 
