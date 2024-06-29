@@ -15,10 +15,10 @@ database:
   password: root
 
   # the JDBC URL for containerized app
-  url: jdbc:mysql://mysql-todos-db:3306/todo
+#  url: jdbc:mysql://mysql-todos-db:3306/todo
 
   # the JDBC URL for app running locally
-#  url: jdbc:mysql://localhost:3306/todo
+  url: jdbc:mysql://localhost:3306/todo
 
   # any properties specific to your JDBC driver:
   properties:
